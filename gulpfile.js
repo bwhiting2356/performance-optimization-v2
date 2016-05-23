@@ -3,10 +3,11 @@
 var gulp = require('gulp'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
-  rename = require('gulp-rename');
+  rename = require('gulp-rename'),
+  cleanCSS = require('gulp-clean-css');
 
 gulp.task("concatScripts", function() {
-    gulp.src([
+    return gulp.src([
         'js/jquery.js', 
         'js/fastclick.js', 
         'js/foundation.js',
@@ -16,8 +17,16 @@ gulp.task("concatScripts", function() {
     .pipe(gulp.dest("js"))
 });
 
+gulp.task("minifyScripts", ["concatScripts"], function() {
+    gulp.src("js/app.js")
+        .pipe(uglify())
+        .pipe(rename('app.min.js'))
+        .pipe(gulp.dest('js'));
+});
+
+
 gulp.task("concatCSS", function() {
-    gulp.src([
+    return gulp.src([
         'css/normalize.css',
         'css/foundation.css',
         'css/arvo.css',
@@ -33,13 +42,14 @@ gulp.task("concatCSS", function() {
     .pipe(gulp.dest("css"))
 });
 
-gulp.task("minifyScripts", function() {
-    gulp.src("js/app.js")
-        .pipe(uglify())
-        .pipe(rename('app.min.js'))
-        .pipe(gulp.dest('js'));
+
+gulp.task('minifyCSS', ['concatCSS'], function() {
+    gulp.src('css/styles.css')
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(rename('styles.min.css'))
+        .pipe(gulp.dest('css'));
 });
 
-gulp.task("default", ["hello"], function() {
-    console.log("This is the default task")
-});
+gulp.task("build", ['minifyScripts', 'minifyCSS']);
+
+gulp.task("default", ["build"]);
