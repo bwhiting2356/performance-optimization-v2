@@ -6,6 +6,10 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   cleanCSS = require('gulp-clean-css');
 
+var options = {
+
+ }
+
 gulp.task("concatScripts", function() {
     return gulp.src([
         'src/js/jquery.js', 
