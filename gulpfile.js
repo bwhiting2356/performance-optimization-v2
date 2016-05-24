@@ -33,8 +33,8 @@ gulp.task("concatCSS", function() {
     return gulp.src([
         'src/css/normalize.css',
         'src/css/foundation.css',
-        'src/css/arvo.css',
-        'src/css/ubuntu.css',
+        // 'src/css/arvo.css',
+        // 'src/css/ubuntu.css',
         'src/css/basics.css',
         'src/css/menu.css',
         'src/css/hero.css',
