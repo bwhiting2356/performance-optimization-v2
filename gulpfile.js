@@ -4,11 +4,8 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename'),
-  cleanCSS = require('gulp-clean-css');
-
-var options = {
-
- }
+  cleanCSS = require('gulp-clean-css'),
+  minifyHTML = require('gulp-minify-html');
 
 gulp.task("concatScripts", function() {
     return gulp.src([
@@ -54,6 +51,12 @@ gulp.task('minifyCSS', ['concatCSS'], function() {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task("build", ['minifyScripts', 'minifyCSS']);
+gulp.task("minifyHTML", function() {
+    gulp.src("src/index.html")
+        .pipe(minifyHTML())
+        .pipe(gulp.dest('public/'));
+});
+
+gulp.task("build", ['minifyScripts', 'minifyCSS', 'minifyHTML']);
 
 gulp.task("default", ["build"]);
