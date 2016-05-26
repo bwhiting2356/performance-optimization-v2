@@ -7,6 +7,8 @@ var gulp = require('gulp'),
   cleanCSS = require('gulp-clean-css'),
   minifyHTML = require('gulp-minify-html');
 
+// Concat and Minify JS
+
 gulp.task("concatScripts", function() {
     return gulp.src([
         'src/js/jquery.js', 
@@ -15,7 +17,7 @@ gulp.task("concatScripts", function() {
         'src/js/foundation.equalizer.js',
         'src/js/foundation.reveal.js'])
     .pipe(concat("app.js"))
-    .pipe(gulp.dest("src/js"))
+    .pipe(gulp.dest("src/js"));
 });
 
 gulp.task("minifyScripts", ["concatScripts"], function() {
@@ -25,6 +27,7 @@ gulp.task("minifyScripts", ["concatScripts"], function() {
         .pipe(gulp.dest('public/js'));
 });
 
+// Concat and minify CSS
 
 gulp.task("concatCSS", function() {
     return gulp.src([
@@ -50,6 +53,8 @@ gulp.task('minifyCSS', ['concatCSS'], function() {
         .pipe(rename('styles.min.css'))
         .pipe(gulp.dest('public/css'));
 });
+
+// Minify HTML
 
 gulp.task("minifyHTML", function() {
     gulp.src("src/index.html")
