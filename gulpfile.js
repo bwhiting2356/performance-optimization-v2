@@ -4,7 +4,8 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   cleanCSS = require('gulp-clean-css'),
   minifyHTML = require('gulp-minify-html'),
-  watch = require('gulp-watch');
+  watch = require('gulp-watch'),
+  connect = require('gulp-connect');
 
 // Concat and Minify JS
 
@@ -24,7 +25,8 @@ gulp.task("minifyScripts", ["concatScripts"], function() {
     gulp.src("src/js/app.js")
         .pipe(uglify())
         .pipe(rename('app.min.js'))
-        .pipe(gulp.dest('public/js'));
+        .pipe(gulp.dest('public/js'))
+        .pipe(connect.reload());
 });
 
 // Concat and minify CSS
@@ -51,7 +53,8 @@ gulp.task('minifyCSS', ['concatCSS'], function() {
     gulp.src('src/css/styles.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename('styles.min.css'))
-        .pipe(gulp.dest('public/css'));
+        .pipe(gulp.dest('public/css'))
+        .pipe(connect.reload());
 });
 
 // Minify HTML
@@ -59,8 +62,11 @@ gulp.task('minifyCSS', ['concatCSS'], function() {
 gulp.task("minifyHTML", function() {
     gulp.src("src/index.html")
         .pipe(minifyHTML())
-        .pipe(gulp.dest('public/'));
+        .pipe(gulp.dest('public/'))
+        .pipe(connect.reload());
 });
+
+// Watch
 
 gulp.task("watch", function() {
     gulp.watch('src/js/*.js', ['minifyScripts']);
@@ -68,6 +74,15 @@ gulp.task("watch", function() {
     gulp.watch('src/index.html', ['minifyHTML']);
 })
 
+// Connect
+
+gulp.task("connect", function() {
+    connect.server({
+        root: 'public',
+        livereload: true
+    })
+})
+
 gulp.task("build", ['minifyScripts', 'minifyCSS', 'minifyHTML']);
 
-gulp.task("default", ["build", "watch"]);
+gulp.task("default", ["build", "connect", "watch"]);
