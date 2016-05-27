@@ -6,7 +6,8 @@ var gulp = require('gulp'),
   minifyHTML = require('gulp-minify-html'),
   watch = require('gulp-watch'),
   connect = require('gulp-connect'),
-  autoprefixer = require('gulp-autoprefixer');
+  autoprefixer = require('gulp-autoprefixer'),
+  inlineimg = require('gulp-inline-image-html');
 
 // Concat and Minify JS
 
@@ -50,7 +51,7 @@ gulp.task("concatCSS", function() {
 });
 
 gulp.task('autoprefixer', ['concatCSS'], function () {
-    gulp.src('public/css/styles.css')
+    return gulp.src('public/css/styles.css')
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -67,15 +68,23 @@ gulp.task('minifyCSS', ['autoprefixer'], function() {
         .pipe(connect.reload());
 });
 
+// Inline Images
+
+gulp.task("inlineimg", function() {
+    return gulp.src("src/index.html")
+        .pipe(inlineimg('src'))
+        .pipe(gulp.dest('public/'))
+});
 
 // Minify HTML
 
-gulp.task("minifyHTML", function() {
-    gulp.src("src/index.html")
+gulp.task("minifyHTML", ['inlineimg'], function() {
+    gulp.src("public/index.html")
         .pipe(minifyHTML())
         .pipe(gulp.dest('public/'))
         .pipe(connect.reload());
 });
+
 
 // Watch
 
