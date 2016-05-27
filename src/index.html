@@ -47,21 +47,21 @@
         <section class="image-grid">
             <h2>Recent Photos</h2>
             <div class="row" data-equalizer>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="1" data-avatarIndex="2">
                     <a href="#" data-reveal-id="photo1-1"><img src="img/photos/photo1.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar2.jpg" alt="Photo"  class="avatar">
                         <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
                     </div>
                 </div>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="2" data-avatarIndex="3">
                     <a href="#" data-reveal-id="photo1-2"><img src="img/photos/photo2.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar3.jpg" alt="Photo"  class="avatar">
                         <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
                     </div>
                 </div>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="3" data-avatarIndex="4">
                     <a href="#" data-reveal-id="photo1-3"><img src="img/photos/photo3.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar4.jpg" alt="Photo"  class="avatar">
@@ -70,21 +70,21 @@
                 </div>
             </div>
             <div class="row" data-equalizer>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="4" data-avatarIndex="5">
                     <a href="#" data-reveal-id="photo2-1"><img src="img/photos/photo4.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar5.jpg" alt="Photo"  class="avatar">
                         <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
                     </div>
                 </div>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="5" data-avatarIndex="6">
                     <a href="#" data-reveal-id="photo2-2"><img src="img/photos/photo5.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar6.jpg" alt="Photo"  class="avatar">
                         <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
                     </div>
                 </div>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="6" data-avatarIndex="7">
                     <a href="#" data-reveal-id="photo2-3"><img src="img/photos/photo6.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar7.jpg" alt="Photo"  class="avatar">
@@ -93,21 +93,21 @@
                 </div>
             </div>
             <div class="row" data-equalizer>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="7" data-avatarIndex="3">
                     <a href="#" data-reveal-id="photo3-1"><img src="img/photos/photo7.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar3.jpg" alt="Photo"  class="avatar">
                         <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
                     </div>
                 </div>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="8" data-avatarIndex="7">
                     <a href="#" data-reveal-id="photo3-2"><img src="img/photos/photo8.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar7.jpg" alt="Photo"  class="avatar">
                         <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
                     </div>
                 </div>
-                <div class="medium-4 columns image">
+                <div class="medium-4 columns image" data-photoIndex="9" data-avatarIndex="4">
                     <a href="#" data-reveal-id="photo3-3"><img src="img/photos/photo9.jpg" alt="Photo"  data-equalizer-watch></a>
                     <div class="info">
                         <img src="img/avatars/avatar4.jpg" alt="Photo"  class="avatar">
@@ -222,5 +222,14 @@
         <script>
           $(document).foundation();
         </script>
+        <div id="real-modal" class="reveal-modal" aria-hidden="true" role="dialog">
+            <h2 class="modalTitle">Photo</h2>
+            <img src="" alt="Photo" >
+            <div class="info">
+                <img src="" alt="Photo"  class="avatar">
+                <span class="attribution">Photo by <b>Werner Bechtelar</b></span>
+            </div>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
     </body>
 </html>
