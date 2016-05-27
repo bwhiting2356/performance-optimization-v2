@@ -5,7 +5,8 @@ var gulp = require('gulp'),
   cleanCSS = require('gulp-clean-css'),
   minifyHTML = require('gulp-minify-html'),
   watch = require('gulp-watch'),
-  connect = require('gulp-connect');
+  connect = require('gulp-connect'),
+  autoprefixer = require('gulp-autoprefixer');
 
 // Concat and Minify JS
 
@@ -45,17 +46,27 @@ gulp.task("concatCSS", function() {
         'src/css/footer.css'
         ])
     .pipe(concat("styles.css"))
-    .pipe(gulp.dest("public/css"))
+    .pipe(gulp.dest("public/css"));
+});
+
+gulp.task('autoprefixer', ['concatCSS'], function () {
+    gulp.src('public/css/styles.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('public/css'));
 });
 
 
-gulp.task('minifyCSS', ['concatCSS'], function() {
+gulp.task('minifyCSS', ['autoprefixer'], function() {
     gulp.src('public/css/styles.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename('styles.min.css'))
         .pipe(gulp.dest('public/css'))
         .pipe(connect.reload());
 });
+
 
 // Minify HTML
 
@@ -72,7 +83,7 @@ gulp.task("watch", function() {
     gulp.watch('src/js/*.js', ['minifyScripts']);
     gulp.watch('src/css/*.css', ['minifyCSS']);
     gulp.watch('src/index.html', ['minifyHTML']);
-})
+});
 
 // Connect
 
@@ -80,8 +91,8 @@ gulp.task("connect", function() {
     connect.server({
         root: 'public',
         livereload: true
-    })
-})
+    });
+});
 
 gulp.task("build", ['minifyScripts', 'minifyCSS', 'minifyHTML']);
 
