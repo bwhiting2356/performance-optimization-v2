@@ -7060,7 +7060,8 @@ body {
     font-weight: 500;
     letter-spacing: normal;
     margin-left: 0.5rem;
-    padding: 0.5rem 1.5rem;
+    overflow: visible;
+    padding: 0.4rem 1.5rem;
     text-transform: none;
 }
 .menu .account a:hover {
@@ -7068,23 +7069,26 @@ body {
     border-color: rgb(82, 202, 109);
     color: #fff;
 }
+
 .menu .logo {
-    background: url('../img/logo.png') no-repeat top left;
-    background-size: contain;
+/*    background: url('../img/logo.png') no-repeat top left;
+    background-size: contain;*/
     font-family: "Arvo", serif;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 3.8rem;
+    font-weight: 500;
     line-height: 1;
-    margin: 0 0 1rem 0;
-    color: rgb(72, 84, 97);
-    text-indent: -9999999rem;
-    overflow: hidden;
+    margin: -.5rem 0 1rem 0;
+    color: #5C6A6A;
+/*    text-indent: -9999999rem;*/
+/*    overflow: hidden;*/
     width: 40rem;
     height: 3rem;
 }
 .menu .logo b {
-    color: rgb(47, 171, 206);
+    font-size: 2.8rem;
+    color: #34B9D9;
     font-family: "Ubuntu";
+    margin-left: 5px;
 }
 @media only screen and (min-width: 40.063em) {
     .logo {

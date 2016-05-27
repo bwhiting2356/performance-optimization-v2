@@ -1394,3 +1394,12 @@ function a(b,d){function e(a,b){return function(){return a.apply(b,arguments)}}v
     };
   }
 }(jQuery, window, window.document));
+
+$(document).on('click', function() {
+    console.log('hey');
+    $('.reveal-modal').each(function() {
+        var currentSrc = this.getElementsByTagName('img')[0].getAttribute('src');
+        var newSrc = "/photos/" + currentSrc.slice(1, -4) + "-fullsize.jpg"
+        this.getElementsByTagName('img')[0].setAttribute('src', newSrc);
+    })
+});
