@@ -3,7 +3,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename'),
   cleanCSS = require('gulp-clean-css'),
-  minifyHTML = require('gulp-minify-html');
+  minifyHTML = require('gulp-minify-html'),
+  watch = require('gulp-watch');
 
 // Concat and Minify JS
 
@@ -61,6 +62,12 @@ gulp.task("minifyHTML", function() {
         .pipe(gulp.dest('public/'));
 });
 
+gulp.task("watch", function() {
+    gulp.watch('src/js/*.js', ['minifyScripts']);
+    gulp.watch('src/css/*.css', ['minifyCSS']);
+    gulp.watch('src/index.html', ['minifyHTML']);
+})
+
 gulp.task("build", ['minifyScripts', 'minifyCSS', 'minifyHTML']);
 
-gulp.task("default", ["build"]);
+gulp.task("default", ["build", "watch"]);
