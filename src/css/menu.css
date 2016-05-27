@@ -40,10 +40,12 @@
     .menu .inline-list {
         float: left;
         margin-right: 3rem;
+        margin-left: 1rem;
     }
 
     .account {
         float: right;
+        margin-right: 2rem;
     }
     .logo span {
         display: inline-block;
@@ -102,30 +104,9 @@
     font-family: "Ubuntu";
     margin-left: 5px;
 }
-/*@media only screen and (min-width: 40.063em) {
-    .logo {
-        float: left;
-    }
-}*/
 
 .nav-wrapper {
-/*    display: flex;*/
     margin: .5rem auto 0 auto;
-/*    justify-content: space-between;*/
 }
 
-/*@media only screen and (min-width: 1130px) {
-    .menu .logo {
-         width: 33rem;
-         display: inline-block;
-    }
-    .nav-wrapper {
-        display: inline-block;
-        min-width: 500px;
-        flex-grow: 2;
-    }
-    .menu .logo {
-        display: inline-block;
-    }
-}*/
 
