@@ -18,11 +18,11 @@ gulp.task("concatScripts", function() {
         'src/js/foundation.reveal.js',
         'src/js/scripts.js'])
     .pipe(concat("app.js"))
-    .pipe(gulp.dest("src/js"));
+    .pipe(gulp.dest("public/js"));
 });
 
 gulp.task("minifyScripts", ["concatScripts"], function() {
-    gulp.src("src/js/app.js")
+    gulp.src("public/js/app.js")
         .pipe(uglify())
         .pipe(rename('app.min.js'))
         .pipe(gulp.dest('public/js'))
@@ -45,12 +45,12 @@ gulp.task("concatCSS", function() {
         'src/css/footer.css'
         ])
     .pipe(concat("styles.css"))
-    .pipe(gulp.dest("src/css"))
+    .pipe(gulp.dest("public/css"))
 });
 
 
 gulp.task('minifyCSS', ['concatCSS'], function() {
-    gulp.src('src/css/styles.css')
+    gulp.src('public/css/styles.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename('styles.min.css'))
         .pipe(gulp.dest('public/css'))
